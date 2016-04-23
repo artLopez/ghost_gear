@@ -9,25 +9,15 @@
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="365dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
         android:weightSum="1">
+
         <Spinner
-            android:layout_width="239dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
             android:id="@+id/speciesSelection"
-            android:spinnerMode="dropdown"
-
-            android:layout_marginRight="49dp"
-            android:layout_marginEnd="49dp" />
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:id="@+id/addButton"
-            android:layout_weight="0.87" />
-
+            android:spinnerMode="dropdown" />
     </LinearLayout>
 
     <ListView
@@ -35,5 +25,6 @@
             android:layout_height="match_parent"
             android:id="@+id/speciesList"
             android:layout_below="@+id/speciesSelection" />
+
 </LinearLayout>
 
