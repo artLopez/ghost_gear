@@ -25,6 +25,7 @@ public interface APIService {
                 @Part("color") String color,
                 @Part("mesh_size") String meshSize,
                 @Part("twine_size") String twineSize,
+                @Part("num_strands") String numberStrands,
                 @Part("net_code") String netCode,
                 @Part("net_width") String netWidth,
                 @Part("net_height") String netHeight,
