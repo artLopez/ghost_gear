@@ -18,6 +18,16 @@
         <activity android:name=".AnimalSelection" />
         <activity android:name=".SpeciesSelection" />
         <activity android:name=".MeasurmentForNet"></activity>
+        <activity
+            android:name=".ColorActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 </manifest>
