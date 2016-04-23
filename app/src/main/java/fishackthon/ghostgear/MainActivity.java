@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Double mLongitude;
     private String mNotes;
     private File imgFile;
+    private Record mRecord;
 
 
 
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onOpenCamera() {
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        //Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
         startActivityForResult(intent, IMAGE_REQUEST);
     }
 
@@ -93,17 +96,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getLocation(){
+        mRecord = new Record();
         gps = new GPSTracker(this);
         gps.getLocation();
         if(!gps.canGetLocation()){
             gps.showSettingsAlert();
         }
         else {
-            mLatitude = gps.getLatitude();
-            mLongitude = gps.getLongitude();
+           //while(mLatitude == null) {
+                mLatitude = gps.getLatitude();
+                mLongitude = gps.getLongitude();
+            //}
         }
 
+        Log.v("GPS", Double.toString(mLatitude));
+        Log.v("GPS", Double.toString(mLongitude));
+        mRecord.setCoordinates(mLatitude, mLongitude);
+
         Intent intent = new Intent(this, ColorActivity.class);
+        intent.putExtra("mRecord", mRecord);
         startActivity(intent);
     }
     @Override

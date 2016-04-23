@@ -1,5 +1,6 @@
 package fishackthon.ghostgear;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  */
 
 
-public class Record {
+public class Record implements Serializable{
     protected String mNotes;
     protected double mLatitude;
     protected double mLongitude;
