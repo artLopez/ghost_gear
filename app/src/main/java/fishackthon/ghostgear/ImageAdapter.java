@@ -3,11 +3,10 @@ package fishackthon.ghostgear;
 /**
  * Created by Algernon on 4/23/16.
  */
-import android.app.*;
-import android.os.*;
+
+import android.util.Log;
 import android.widget.*;
 import java.util.*;
-import android.graphics.*;
 import android.view.*;
 import android.content.*;
 
@@ -33,10 +32,18 @@ public class ImageAdapter extends BaseAdapter {
         return position;
     }
 
-    class ViewHolder {
+    class ViewHolder implements View.OnTouchListener {
         ImageView picture;
         ViewHolder(View v) {
             picture = (ImageView) v.findViewById(R.id.imageView);
+            picture.setOnTouchListener(this);
+
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            Log.v("Touched", "Touched");
+            return false;
         }
     }
 
