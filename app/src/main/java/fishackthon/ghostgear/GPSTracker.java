@@ -26,8 +26,8 @@ public class GPSTracker extends Service implements LocationListener
     boolean canGetLocation = false;
 
     Location location;
-    double latitude;
-    double longitude;
+    String latitude;
+    String longitude;
 
     //The minimum distance to change updates in meters
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; //10 meters
@@ -115,8 +115,8 @@ public class GPSTracker extends Service implements LocationListener
     {
         if (location != null)
         {
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
+            latitude = Double.toString(location.getLatitude());
+            longitude = Double.toString(location.getLongitude());
         }
     }
 
@@ -136,7 +136,7 @@ public class GPSTracker extends Service implements LocationListener
     /**
      * Function to get latitude
      */
-    public double getLatitude(double prevLat)
+    public String getLatitude(double prevLat)
     {
 
 
@@ -203,7 +203,7 @@ public class GPSTracker extends Service implements LocationListener
     /**
      * Function to get longitude
      */
-    public double getLongitude(double prevLon)
+    public String getLongitude(double prevLon)
     {
         if (!isGPSEnabled && !isNetworkEnabled)
         {
@@ -261,13 +261,13 @@ public class GPSTracker extends Service implements LocationListener
         return longitude;
     }
 
-    public double getLatitude(){
-        latitude = location.getLatitude();
+    public String getLatitude(){
+        latitude = Double.toString(location.getLatitude());
         return latitude;
     }
 
-    public double getLongitude(){
-        longitude = location.getLongitude();
+    public String getLongitude(){
+        longitude = Double.toString(location.getLongitude());
         return longitude;
     }
 

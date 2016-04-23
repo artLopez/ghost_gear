@@ -1,43 +1,83 @@
 package fishackthon.ghostgear;
 
+import java.io.File;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by brian on 4/23/16.
  */
 
-
 public class Record implements Serializable{
-    protected String mNotes;
-    protected double mLatitude;
-    protected double mLongitude;
-    protected Date mDate;
-    protected String mTime;
-    protected String mImagePath;
+    protected String firstName;
+    protected String lastName;
+    protected String email;
+    protected String number;
+    protected String role;
+    protected String latitude;
+    protected String longitude;
+    protected File imageFile;
+    protected String color;
+    protected String animalDescriptions;
+    protected String meshSize;
+    protected String twineSize;
+    protected String numberStrands;
+    protected String netWidth;
+    protected String netHeight;
+    protected String netCode;
+    protected String comments;
 
     public Record() {
-
+        firstName = "";
+        lastName = "";
+        email = "";
+        number = "";
+        role = "";
+        latitude = "";
+        longitude = "";
+        imageFile = null;
+        color = "";
+        animalDescriptions = "";
+        meshSize = "";
+        twineSize = "";
+        numberStrands = "";
+        netCode = "";
+        netWidth = "";
+        netHeight = "";
+        comments = "";
     }
 
-    public Record setCoordinates (double latitude, double longitude) {
-        mLatitude = latitude;
-        mLongitude = longitude;
+    public Record setMeasurements(String mMeshSize, String mTwineSize, String mNumberStrands, String mNetWidth, String mNetHeight){
+        meshSize = mMeshSize;
+        twineSize = mTwineSize;
+        numberStrands = mNumberStrands;
+        netWidth = mNetWidth;
+        netHeight = mNetHeight;
         return this;
     }
 
-    public Record setDate (Date date) {
-        mDate = date;
+    public Record setComments(String mComments){
+        comments = mComments;
         return this;
     }
 
-    public Record setCurrentDate () {
-        mDate = new Date(System.currentTimeMillis());
+    public Record setNetCode(String mNetCode){
+        netCode = mNetCode;
         return this;
     }
 
-    public Record setImage(String imagePath) {
-        mImagePath = imagePath;
+    public Record setColor(String mColor){
+        color = mColor;
+        return this;
+    }
+
+    public Record setCoordinates (String mlatitude, String mlongitude) {
+        latitude = mlatitude;
+        longitude = mlongitude;
+        return this;
+    }
+
+    public Record setImage(File imgFile) {
+        imageFile = imgFile;
 
         return this;
     }

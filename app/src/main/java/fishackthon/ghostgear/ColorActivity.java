@@ -18,7 +18,5 @@ public class ColorActivity  extends AppCompatActivity {
 
         mRecord = (Record) getIntent().getSerializableExtra("mRecord");
 
-        Log.d("lat", Double.toString(mRecord.mLatitude));
-        Log.d("lon", Double.toString(mRecord.mLongitude));
     }
 }

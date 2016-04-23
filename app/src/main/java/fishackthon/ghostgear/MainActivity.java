@@ -21,11 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected Context mContext;
     private int IMAGE_REQUEST = 1;
     private GPSTracker gps;
-    private ImageView mImageView;
-    private String mImagePath;
-    private Double mLatitude;
-    private Double mLongitude;
-    private String mNotes;
+    private String ImagePath;
+    private String Latitude;
+    private String Longitude;
+    private String Notes;
     private File imgFile;
     private Record mRecord;
 
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.v("Start", "Called");
+        mRecord = new Record();
         Context c = getApplicationContext();
         if (c == null) {
             Log.v("Start", "Null");
@@ -82,21 +81,20 @@ public class MainActivity extends AppCompatActivity {
                         null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
 
         if (cursor.moveToFirst()) {
-            //mImageView = (ImageView) findViewById(R.id.imageView);
-            mImagePath = cursor.getString(1);
+            ImagePath = cursor.getString(1);
             String imageLocation = cursor.getString(1);
             imgFile = new File(imageLocation);
             Bitmap imgBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(imgBitmap, (int) (imgBitmap.getWidth() * 0.8), (int) (imgBitmap.getHeight() * 0.8), true);
 
-            //mImageView.setImageBitmap(resizedBitmap);
+            mRecord.setImage(imgFile);
         }
 
         getLocation();
     }
 
     public void getLocation(){
-        mRecord = new Record();
+
         gps = new GPSTracker(this);
         gps.getLocation();
         if(!gps.canGetLocation()){
@@ -104,14 +102,14 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
            //while(mLatitude == null) {
-                mLatitude = gps.getLatitude();
-                mLongitude = gps.getLongitude();
+                Latitude = gps.getLatitude();
+                Longitude = gps.getLongitude();
             //}
         }
 
-        Log.v("GPS", Double.toString(mLatitude));
-        Log.v("GPS", Double.toString(mLongitude));
-        mRecord.setCoordinates(mLatitude, mLongitude);
+        Log.v("GPS", Latitude);
+        Log.v("GPS", Longitude);
+        mRecord.setCoordinates(Latitude, Longitude);
 
         Intent intent = new Intent(this, ColorActivity.class);
         intent.putExtra("mRecord", mRecord);
