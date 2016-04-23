@@ -1,16 +1,17 @@
 package fishackthon.ghostgear;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
+import android.content.ClipData;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,63 +20,46 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-
 public class SpeciesSelection extends AppCompatActivity  {
     private Spinner speciesSelection;
-    private static final String[]species = {"Select a species...","Crab","Fish","Sea Lion", "Turtle"};
     private ListView animalList;
-    private ArrayList<String> speciesAdded;
-    ArrayAdapter<String> speciesAdapter;
+    private TextView question;
+    private ArrayList<ItemData> speciesAdded;
+    private ArrayList<ItemData> aniList;
+    private ArrayAdapter<ItemData> speciesAdapter;
+    private SpinnerAdapter adapter;
     private AlertDialog.Builder speciesStatus;
     private RadioGroup radioGroup;
     private RadioButton aliveButton, deadButton;
-    private Button okButton, cancelButton;
-    private TextView question;
-    private boolean userSelect = false;
-
+    private Button okButton, cancelButton, nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_species_selection);
 
-        speciesSelection = (Spinner) findViewById(R.id.speciesSelection);
-        animalList = (ListView) findViewById(R.id.speciesList);
-        speciesAdded = new ArrayList<String>();
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                ( SpeciesSelection.this, android.R.layout.simple_spinner_item, species ){
-            @Override
-            public boolean isEnabled(int position){
-                if(position == 0)
-                    return false;
-                else
-                    return true;
-            }
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView tv = (TextView) view;
-                if(position == 0)
-                    tv.setTextColor(Color.GRAY);
-                else
-                    tv.setTextColor(Color.BLACK);
-
-                return view;
-            }
-        };
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        nextButton = (Button) findViewById(R.id.nextButton);
+        aniList = new ArrayList<>();
+        aniList.add(new ItemData("Select a species...", R.mipmap.ic_launcher));
+        aniList.add(new ItemData("Crab", R.drawable.crab));
+        aniList.add(new ItemData("Fish", R.drawable.fish));
+        aniList.add(new ItemData("Sea lion", R.drawable.sealion));
+        aniList.add(new ItemData("Turtle", R.drawable.turtle));
+        // Spinner
+        speciesSelection = (Spinner) findViewById(R.id.speciesSpinner);
+        adapter = new SpinnerAdapter(this, R.layout.spinner_layout,R.id.text, aniList);
         speciesSelection.setAdapter(adapter);
-        speciesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, speciesAdded);
+        // ListView
+        speciesAdded = new ArrayList<>();
+        animalList = (ListView) findViewById(R.id.speciesList);
+        speciesAdapter = new MyListAdapter();
         animalList.setAdapter( speciesAdapter );
 
         speciesSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(position != 0){
-                    speciesStatusDialog();
-                }
+                if (position != 0)
+                    speciesStatusDialog(position);
             }
 
             @Override
@@ -83,39 +67,89 @@ public class SpeciesSelection extends AppCompatActivity  {
                 // your code here
             }
         });
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    final Intent animalIntent = new Intent(SpeciesSelection.this, MeasurmentForNet.class);
+                    SpeciesSelection.this.startActivity(animalIntent);
+                    SpeciesSelection.this.finish();
 
+            }
+        });
     }
-    private void speciesStatusDialog() {
-        String species = speciesSelection.getSelectedItem().toString();
+
+    private void speciesStatusDialog(int position) {
+        final String species = adapter.list.get(position).getText();
 
         final Dialog speciesStatusDialog = new Dialog(this);
         speciesStatusDialog.setContentView(R.layout.species_custom);
         speciesStatusDialog.setTitle("Current Status of ");
 
-        radioGroup = (RadioGroup) speciesStatusDialog.findViewById(R.id.statusRadioGroup);
-        aliveButton = (RadioButton) speciesStatusDialog.findViewById(R.id.aliveButton);
-        deadButton = (RadioButton) speciesStatusDialog.findViewById(R.id.deadButton);
-        okButton = (Button) speciesStatusDialog.findViewById(R.id.okButton);
-        cancelButton = (Button) speciesStatusDialog.findViewById(R.id.cancelButton);
-        question = (TextView) speciesStatusDialog.findViewById(R.id.questionView);
+        radioGroup   = (RadioGroup)  speciesStatusDialog.findViewById(R.id.statusRadioGroup);
+        aliveButton  = (RadioButton) speciesStatusDialog.findViewById(R.id.aliveButton);
+        deadButton   = (RadioButton) speciesStatusDialog.findViewById(R.id.deadButton);
+        okButton     = (Button)   speciesStatusDialog.findViewById(R.id.okButton);
+        cancelButton = (Button)   speciesStatusDialog.findViewById(R.id.cancelButton);
+        question     = (TextView) speciesStatusDialog.findViewById(R.id.questionView);
 
         question.setText("What is the current status of " + species + "?");
 
         okButton.setOnClickListener(new View.OnClickListener() {
+            String status = null;
+
             @Override
             public void onClick(View v) {
-                speciesAdded.add(speciesSelection.getSelectedItem().toString());
+
+                if(aliveButton.isChecked()){
+                    status = aliveButton.getText().toString();
+                }
+                else{
+                    status = deadButton.getText().toString();
+                }
+
+                speciesAdded.add(new ItemData(species, getImage(species) , status));
                 speciesAdapter.notifyDataSetChanged();
                 speciesStatusDialog.dismiss();
             }
         });
-
         speciesStatusDialog.show();
     }
+    private class MyListAdapter extends ArrayAdapter<ItemData>{
+        public MyListAdapter(){
+            super(SpeciesSelection.this,R.layout.item_data_layout, speciesAdded);
+        }
 
+        @Override
+        public View getView (int position, View convertView,ViewGroup parent ){
+            View itemView = convertView;
+            if(itemView == null){
+                itemView = getLayoutInflater().inflate(R.layout.item_data_layout,parent,false );
+            }
+            ItemData currentItem = speciesAdded.get(position);
+            ImageView currentImage = (ImageView) itemView.findViewById(R.id.item_image);
+            currentImage.setImageResource(currentItem.getImageId());
+
+            TextView speciesView = (TextView) itemView.findViewById(R.id.item_txtMake);
+            speciesView.setText(currentItem.getText());
+
+            TextView statusView = (TextView) itemView.findViewById(R.id.item_statusView);
+            statusView.setText(currentItem.getAnimalStatus());
+
+            return itemView;
+        }
+    }
+    public int getImage(String species){
+        switch(species){
+            case "Crab":
+                return R.drawable.crab;
+            case "Fish":
+                return R.drawable.fish;
+            case "Sea lion":
+                return R.drawable.sealion;
+            case "Turtle":
+                return R.drawable.turtle;
+            default:
+                return -1;
+        }
+    }
 }
-
-
-
-
-

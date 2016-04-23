@@ -28,9 +28,9 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="aliveButton"
+                android:text="Alive"
                 android:id="@+id/aliveButton"
-                android:checked="false" />
+                android:checked="true" />
 
             <RadioButton
                 android:layout_width="match_parent"
