@@ -14,9 +14,9 @@ import android.content.*;
 public class ImageAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Bitmap> bitmapList;
+    private ArrayList<Integer> bitmapList;
 
-    public ImageAdapter(Context context, ArrayList<Bitmap> bitmapList) {
+    public ImageAdapter(Context context, ArrayList<Integer> bitmapList) {
         this.context = context;
         this.bitmapList = bitmapList;
     }
@@ -26,25 +26,44 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return null;
+        return this.bitmapList.get(position);
     }
 
     public long getItemId(int position) {
-        return 0;
+        return position;
+    }
+
+    class ViewHolder {
+        ImageView picture;
+        ViewHolder(View v) {
+            picture = (ImageView) v.findViewById(R.id.imageView);
+        }
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
+//        if (convertView == null) {
+//            imageView = new ImageView(this.context);
+//            imageView.setLayoutParams(new GridView.LayoutParams(115, 115));
+//            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//        } else {
+//            imageView = (ImageView) convertView;
+//        }
+//
+//        imageView.setImageBitmap(this.bitmapList.get(position));
+//        return imageView;
+        View row = convertView;
+        ViewHolder holder = null;
         if (convertView == null) {
-            imageView = new ImageView(this.context);
-            imageView.setLayoutParams(new GridView.LayoutParams(115, 115));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            row = inflater.inflate(R.layout.single_picture, parent, false);
+            holder = new ViewHolder(row);
+            row.setTag(holder);
         } else {
-            imageView = (ImageView) convertView;
+            holder = (ViewHolder) row.getTag();
         }
-
-        imageView.setImageBitmap(this.bitmapList.get(position));
-        return imageView;
+        holder.picture.setImageResource(bitmapList.get(position));
+        holder.picture.setAdjustViewBounds(true);
+        return row;
     }
 
 }

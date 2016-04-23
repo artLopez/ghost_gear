@@ -8,10 +8,13 @@ import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import java.io.File;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MEDIA_TYPE_IMAGE = 1;
@@ -25,26 +28,38 @@ public class MainActivity extends AppCompatActivity {
     private String mNotes;
     private File imgFile;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.v("Start", "Called");
+        Context c = getApplicationContext();
+        if (c == null) {
+            Log.v("Start", "Null");
+        }
+        DatabaseAdapter mDbHelper = new DatabaseAdapter(getApplicationContext());
+        mDbHelper.open();
 
-        mContext = MainActivity.this;
-        TestAdapter mDbHelper = new TestAdapter(this);
-        mDbHelper.createDatabase();
         mDbHelper.open();
 
         mDbHelper.close();
+        // Twine 0.3, Mesh1.7
+        final ArrayList<String> lol = mDbHelper.getMatches("0.5", "9.5", -1, "White");
 
+        mDbHelper.close();
 
         final Button cameraBT = (Button) findViewById(R.id.cameraButton);
 
         cameraBT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onOpenCamera();
+              //  Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
             }
         });
+
+
     }
 
     public void onOpenCamera() {

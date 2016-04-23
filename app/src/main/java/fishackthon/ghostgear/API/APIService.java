@@ -13,8 +13,8 @@ public interface APIService {
     public static final String BASE_URL = "http://localhost:2455/";
 
     @Multipart
-    @POST("/record")
-    void upload(@Part("image")TypedFile file,
+    @POST("/ghostgear")
+    void upload(
                 @Part("first_name") String firstName,
                 @Part("last_name") String lastName,
                 @Part("email") String email,
@@ -29,7 +29,6 @@ public interface APIService {
                 @Part("net_width") String netWidth,
                 @Part("net_height") String netHeight,
                 @Part("comments") String comments,
-                @Part("animals") String animalsExists,
                 @Part("animal_description") String animalDescriptions,
                 Callback<String> cb);
 }
