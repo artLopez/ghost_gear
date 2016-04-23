@@ -6,17 +6,19 @@ import android.sax.TextElementListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.List;
 
 public class AnimalSelection extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton yesButton, noButton;
     private Button nextButton;
     private TextView title;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
