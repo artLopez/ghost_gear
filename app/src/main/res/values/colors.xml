@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#125688</color>
     <color name="colorPrimaryDark">#134b74</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="white">#ffffff</color>
     <color name="blue">#0000ff</color>
     <color name="green">#0d930d</color>
@@ -11,6 +11,6 @@
     <color name="black">#000000</color>
     <color name="brown">#7A5230</color>
     <color name="FabColor">#8cff65</color>
-    <color name="Gear">#214066</color>
+    <color name="Gear">#134b74</color>
     <color name="fiftygrey">#67c0ea</color>
 </resources>

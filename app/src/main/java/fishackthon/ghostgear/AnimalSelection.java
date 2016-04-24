@@ -35,13 +35,11 @@ public class AnimalSelection extends AppCompatActivity {
             public void onClick(View v) {
                 if(yesButton.isChecked()){
                     final Intent animalIntent = new Intent(AnimalSelection.this, SpeciesSelection.class);
-                    AnimalSelection.this.startActivity(animalIntent);
-                    AnimalSelection.this.finish();
+                    startActivity(animalIntent);
                 }
                 else{
-                    final Intent animalIntent = new Intent(AnimalSelection.this, SpeciesSelection.class);
-                    AnimalSelection.this.startActivity(animalIntent);
-                    AnimalSelection.this.finish();
+                    final Intent measureIntent = new Intent(AnimalSelection.this, MeasurmentForNet.class);
+                    startActivity(measureIntent);
                 }
 
             }
