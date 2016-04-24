@@ -3,7 +3,9 @@ package fishackthon.ghostgear;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,17 +35,17 @@ public class SpeciesSelection extends AppCompatActivity  {
     private AlertDialog.Builder speciesStatus;
     private RadioGroup radioGroup;
     private RadioButton aliveButton, deadButton;
-    private Button okButton, cancelButton, nextButton;
     private HashMap<String, ArrayList<String>> animals = new HashMap<String, ArrayList<String>>();
+    private FloatingActionButton okButton, cancelButton, nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_species_selection);
 
-        nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
         aniList = new ArrayList<>();
-        aniList.add(new ItemData("Select a species...", R.mipmap.ic_launcher));
+        aniList.add(new ItemData("Select a species...", R.drawable.clear));
         aniList.add(new ItemData("Crab", R.drawable.crab));
         aniList.add(new ItemData("Fish", R.drawable.fish));
         aniList.add(new ItemData("Sea lion", R.drawable.sealion));
@@ -86,13 +88,13 @@ public class SpeciesSelection extends AppCompatActivity  {
 
         final Dialog speciesStatusDialog = new Dialog(this);
         speciesStatusDialog.setContentView(R.layout.species_custom);
-        speciesStatusDialog.setTitle("Current Status of ");
+        //speciesStatusDialog.setTitle("Current Status of ");
 
         radioGroup   = (RadioGroup)  speciesStatusDialog.findViewById(R.id.statusRadioGroup);
         aliveButton  = (RadioButton) speciesStatusDialog.findViewById(R.id.aliveButton);
         deadButton   = (RadioButton) speciesStatusDialog.findViewById(R.id.deadButton);
-        okButton     = (Button)   speciesStatusDialog.findViewById(R.id.okButton);
-        cancelButton = (Button)   speciesStatusDialog.findViewById(R.id.cancelButton);
+        okButton     = (FloatingActionButton)   speciesStatusDialog.findViewById(R.id.okButton);
+        cancelButton = (FloatingActionButton)   speciesStatusDialog.findViewById(R.id.cancelButton);
         question     = (TextView) speciesStatusDialog.findViewById(R.id.questionView);
 
         question.setText("What is the current status of " + species + "?");
@@ -115,6 +117,14 @@ public class SpeciesSelection extends AppCompatActivity  {
                 speciesStatusDialog.dismiss();
             }
         });
+
+        cancelButton .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speciesStatusDialog.dismiss();
+            }
+        });
+
         speciesStatusDialog.show();
     }
     private class MyListAdapter extends ArrayAdapter<ItemData>{
@@ -134,9 +144,13 @@ public class SpeciesSelection extends AppCompatActivity  {
 
             TextView speciesView = (TextView) itemView.findViewById(R.id.item_txtMake);
             speciesView.setText(currentItem.getText());
+            speciesView.setTextSize(25);
+            speciesView.setTextColor(Color.parseColor("#FFFFFF"));
 
             TextView statusView = (TextView) itemView.findViewById(R.id.item_statusView);
             statusView.setText(currentItem.getAnimalStatus());
+            speciesView.setTextSize(20);
+            statusView.setTextColor(Color.parseColor("#FFFFFF"));
 
             return itemView;
         }
