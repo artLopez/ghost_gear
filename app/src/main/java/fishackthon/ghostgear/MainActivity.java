@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDbHelper.close();
 
-        final Button cameraBT = (Button) findViewById(R.id.cameraButton);
+        final FloatingActionButton cameraBT = (FloatingActionButton) findViewById(R.id.cameraButton);
 
         cameraBT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
