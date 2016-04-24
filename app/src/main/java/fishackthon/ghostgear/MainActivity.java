@@ -37,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         cameraBT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                final Intent animalIntent = new Intent(MainActivity.this, MeasurmentForNet.class);
-                MainActivity.this.startActivity(animalIntent);
-                MainActivity.this.finish();
+                onOpenCamera();
             }
         });
     }
