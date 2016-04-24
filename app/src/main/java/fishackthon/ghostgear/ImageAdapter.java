@@ -14,8 +14,8 @@ public class ImageAdapter extends BaseAdapter {
 
     private Context context;
 
-    private int prevId = 1;
-    private int currentId = 1;
+    private String prevId = "1";
+    private String currentId = "1";
 
     private ArrayList<MatchesActivity.CodeID> bitmapList;
 
@@ -75,8 +75,9 @@ public class ImageAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Log.v("Image", "Clicked");
                 Log.v("Image", String.valueOf(v.getId()));
-                prevId = currentId;
-                currentId = v.getId();
+                prevId = bitmapList.get(v.getId()).ID;
+
+                currentId = bitmapList.get(v.getId()).ID;
                 //ImageView selectedImage = (ImageView) findViewById(currentId);
                 //ImageView prevImage = (ImageView) findViewById(prevId);
 
@@ -95,5 +96,10 @@ public class ImageAdapter extends BaseAdapter {
         holder.picture.setAdjustViewBounds(true);
         return row;
     }
+
+    void removeImage() {
+
+    }
+
 
 }

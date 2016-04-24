@@ -115,8 +115,21 @@ public class MatchesActivity extends AppCompatActivity {
         Intent i = getIntent();
         Record mRecord = (Record) i.getSerializableExtra("mRecord");
 
-        ArrayList<String> codes = i.getStringArrayListExtra("lol");
+        //ArrayList<String> codes = i.getStringArrayListExtra("lol");
         this.bitmapList = new ArrayList<CodeID>();
+
+        DatabaseAdapter mDbHelper = new DatabaseAdapter(getApplicationContext());
+        mDbHelper.open();
+
+        Log.v("RECORD", mRecord.numberStrands);
+        Log.v("RECORD", mRecord.color);
+        Log.v("RECORD", mRecord.twineSize);
+        Log.v("RECORD", mRecord.meshSize);
+
+//        // Twine 0.3, Mesh1.7, 3, white
+        final ArrayList<String> codes = mDbHelper.getMatches("0.3", "1.7", 3, "White");
+//
+        mDbHelper.close();
 
 
         try {
@@ -139,8 +152,12 @@ public class MatchesActivity extends AppCompatActivity {
         hitIT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 new AsyncTaskRunner().execute("");
-        }
+                Intent i = new Intent(getApplicationContext(), ThankYou.class);
+                startActivity(i);
+
+            }
     });
 
 }

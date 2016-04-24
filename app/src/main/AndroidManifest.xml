@@ -24,6 +24,7 @@
         <activity android:name=".MeasurmentForNet" />
         <activity android:name=".ColorActivity"/>
         <activity android:name=".MatchesActivity"/>
+        <activity android:name=".ThankYou" />
 
     </application>
 

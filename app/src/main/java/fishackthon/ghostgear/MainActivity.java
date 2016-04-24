@@ -41,13 +41,7 @@ public class MainActivity extends AppCompatActivity {
         if (c == null) {
             Log.v("Start", "Null");
         }
-        DatabaseAdapter mDbHelper = new DatabaseAdapter(getApplicationContext());
-        mDbHelper.open();
 
-        // Twine 0.3, Mesh1.7
-        final ArrayList<String> lol = mDbHelper.getMatches("0.5", "9.5", -1, "White");
-
-        mDbHelper.close();
 
         final FloatingActionButton cameraBT = (FloatingActionButton) findViewById(R.id.cameraButton);
 
