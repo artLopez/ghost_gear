@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -25,7 +26,6 @@ public class MeasurmentForNet extends AppCompatActivity {
         netWidth = (EditText) findViewById(R.id.netWidth);
         strandsEdit = (EditText) findViewById(R.id.strandsEdit);
         nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
-
 
 
 
