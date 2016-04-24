@@ -97,6 +97,7 @@ public class ColorActivity  extends AppCompatActivity implements View.OnClickLis
             default:
                 break;
         }
+        Log.v("color",color );
 
     }
 
