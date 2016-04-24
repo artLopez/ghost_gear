@@ -1,6 +1,7 @@
 package fishackthon.ghostgear;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 
 public class MeasurmentForNet extends AppCompatActivity {
     private EditText meshEdit, twineView, netHeight, netWidth, strandsEdit;
-    private Button nextButton;
+    private FloatingActionButton nextButton;
     private Record mRecord;
 
     @Override
@@ -25,7 +26,7 @@ public class MeasurmentForNet extends AppCompatActivity {
         netHeight = (EditText) findViewById(R.id.netHeight);
         netWidth = (EditText) findViewById(R.id.netWidth);
         strandsEdit = (EditText) findViewById(R.id.strandsEdit);
-        nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
         mRecord = (Record) getIntent().getSerializableExtra("mRecord");
 
         nextButton.setOnClickListener(new View.OnClickListener() {

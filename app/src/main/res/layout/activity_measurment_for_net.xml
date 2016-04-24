@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    >
+    android:background="@color/Gear">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,6 +19,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Measurements"
         android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
         android:paddingTop="10dp"
         android:paddingBottom="20dp"
         android:id="@+id/textView2"
@@ -21,18 +29,24 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:hint="Enter mesh size in cm"
         android:inputType="numberDecimal"
         android:id="@+id/meshEdit" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:hint="Enter twine size in mm"
         android:inputType="numberDecimal"
         android:id="@+id/twineView" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:hint="Enter net height in mm"
         android:inputType="numberDecimal"
         android:id="@+id/netHeight" />
@@ -40,6 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:hint="Enter net width in mm"
         android:id="@+id/netWidth" />
 
@@ -49,14 +65,29 @@
         android:inputType="numberSigned"
         android:ems="10"
         android:id="@+id/strandsEdit"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:hint="Number of strands"
         android:layout_gravity="center_horizontal" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/nextButton"
-        android:layout_gravity="center_horizontal" />
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@android:drawable/ic_media_ff"
+        android:layout_gravity="right"
+        android:layout_marginTop="110dp" />
 
 </LinearLayout>
+</ScrollView>

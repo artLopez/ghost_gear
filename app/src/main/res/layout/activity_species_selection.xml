@@ -55,7 +55,7 @@
             app:pressedTranslationZ="12dp"
             app:borderWidth="0dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="30dp"
             android:src="@android:drawable/ic_media_ff"
             android:layout_gravity="right" />
     </RelativeLayout>
