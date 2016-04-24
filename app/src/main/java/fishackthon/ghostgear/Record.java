@@ -1,11 +1,12 @@
 package fishackthon.ghostgear;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by brian on 4/23/16.
  */
-
 
 public class Record {
     protected String mNotes;
@@ -14,6 +15,7 @@ public class Record {
     protected Date mDate;
     protected String mTime;
     protected String mImagePath;
+    protected HashMap<String,ArrayList<String>> animalsOnNet;
 
     public Record() {
 
@@ -39,5 +41,9 @@ public class Record {
         mImagePath = imagePath;
 
         return this;
+    }
+    public void SetAnimalsOnNetCount(HashMap<String, ArrayList<String>> animals){
+
+
     }
 }

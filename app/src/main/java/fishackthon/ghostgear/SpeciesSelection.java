@@ -19,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class SpeciesSelection extends AppCompatActivity  {
     private Spinner speciesSelection;
@@ -32,6 +34,7 @@ public class SpeciesSelection extends AppCompatActivity  {
     private RadioGroup radioGroup;
     private RadioButton aliveButton, deadButton;
     private Button okButton, cancelButton, nextButton;
+    private HashMap<String, ArrayList<String>> animals = new HashMap<String, ArrayList<String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,5 +154,15 @@ public class SpeciesSelection extends AppCompatActivity  {
             default:
                 return -1;
         }
+    }
+
+    public void addToAnimalHashMap(String animal, String status){
+        if(animals.containsKey(animal)){
+            animals.get(animal).add(status);
+        }else
+        {
+            animals.put(animal, new ArrayList<>(Arrays.asList(status)));
+        }
+
     }
 }
