@@ -1,62 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    >
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <TextView
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Measurements"
-        android:textAlignment="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="20dp"
-        android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="match_parent" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter mesh size in cm"
-        android:inputType="numberDecimal"
-        android:id="@+id/meshEdit" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter twine size in mm"
-        android:inputType="numberDecimal"
-        android:id="@+id/twineView" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter net height in mm"
-        android:inputType="numberDecimal"
-        android:id="@+id/netHeight" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:hint="Enter net width in mm"
-        android:id="@+id/netWidth" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/strandsEdit"
-        android:hint="Number of strands"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/nextButton"
-        android:layout_gravity="center_horizontal" />
-
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        />
+</android.support.v4.widget.DrawerLayout>

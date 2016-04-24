@@ -21,7 +21,8 @@
 
         <activity android:name=".AnimalSelection" />
         <activity android:name=".SpeciesSelection" />
-        <activity android:name=".MeasurmentForNet"></activity>
+        <activity android:name=".MeasurmentForNet">
+        </activity>
 
         <activity
             android:name=".ColorActivity"

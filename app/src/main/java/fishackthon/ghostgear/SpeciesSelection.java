@@ -1,7 +1,6 @@
 package fishackthon.ghostgear;
 
 import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;

@@ -52,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         cameraBT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                onOpenCamera();
+               // onOpenCamera();
               //  Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                Intent intent = new Intent(MainActivity.this, MeasurmentForNet.class);
+                startActivity(intent);
             }
         });
 
