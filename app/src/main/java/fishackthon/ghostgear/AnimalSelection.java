@@ -3,6 +3,7 @@ package fishackthon.ghostgear;
 import android.content.Intent;
 import android.provider.MediaStore;
 import android.sax.TextElementListener;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import java.util.List;
 public class AnimalSelection extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton yesButton, noButton;
-    private Button nextButton;
+    private FloatingActionButton nextButton;
     private TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class AnimalSelection extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.foundGroup);
         yesButton = (RadioButton) findViewById(R.id.yesButton);
         noButton = (RadioButton) findViewById(R.id.noButton);
-        nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
