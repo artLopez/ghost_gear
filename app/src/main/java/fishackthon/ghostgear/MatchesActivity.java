@@ -1,6 +1,8 @@
 package fishackthon.ghostgear;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.graphics.*;
@@ -15,17 +17,13 @@ import android.view.View;
 import android.widget.*;
 
 import fishackthon.ghostgear.API.APIService;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
+import retrofit2.Callback;
 /**
  * Created by Algernon on 4/23/16.
  */
 public class MatchesActivity extends AppCompatActivity {
     private GridView imageGrid;
-    private ArrayList<Integer> bitmapList;
-    APIService service = ServiceGenerator.createService(APIService.class);
+    private ArrayList<CodeID> bitmapList;
     String path;
 
     String first_name = "Daniel";
@@ -45,21 +43,24 @@ public class MatchesActivity extends AppCompatActivity {
     String comments = "Lol";
     String animalDescriptions = "[{code: 3, condition: 'Alive', length_size: 2}]";
 
+    SharedPreferences pref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matches_activity);
         Intent i = getIntent();
+        Record mRecord = (Record) i.getSerializableExtra("mRecord");
 
-        ArrayList <String> codes = i.getStringArrayListExtra("lol");
-        this.bitmapList = new ArrayList<Integer>();
+        ArrayList<String> codes = i.getStringArrayListExtra("lol");
+        this.bitmapList = new ArrayList<CodeID>();
 
-        try{
+
+        try {
             for (String code : codes) {
                 String lowerCode = code.toLowerCase();
                 int id = getResources().getIdentifier(lowerCode, "drawable", getPackageName());
-                this.bitmapList.add(id);
+                this.bitmapList.add(new CodeID(code, String.valueOf(id)));
             }
 
             this.imageGrid = (GridView) findViewById(R.id.gridview);
@@ -69,27 +70,19 @@ public class MatchesActivity extends AppCompatActivity {
             e1.printStackTrace();
         }
 
+
         final Button hitIT = (Button) findViewById(R.id.hitIt);
 
-        hitIT.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //  Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                Log.v("HTTP", "Hitting endpoints");
-                service.upload(first_name, last_name, email, phone, role,
-                        latitude, longitude, color, meshSize, twineSize, numberStrands, netCode, netWidth,
-                        netHeight, comments, animalDescriptions, new Callback<String>() {
-                            @Override
-                            public void success(String s, Response response) {
-                                Log.v("HTTP", "SUCCESS");
-                            }
 
-                            @Override
-                            public void failure(RetrofitError error) {
-                                Log.v("HTTP", "FAILURE");
-                                Log.v("HTTP", error.getMessage());
-                            }
-                        });
-            }
-        });
+
+    }
+    class CodeID {
+        String code = "";
+        String ID = "";
+
+        CodeID(String code, String ID) {
+            this.code = code;
+            this.ID = ID;
+        }
     }
 }
