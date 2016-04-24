@@ -101,10 +101,8 @@ public class MainActivity extends AppCompatActivity {
             gps.showSettingsAlert();
         }
         else {
-           //while(mLatitude == null) {
-                Latitude = gps.getLatitude();
-                Longitude = gps.getLongitude();
-            //}
+            Latitude = gps.getLatitude();
+            Longitude = gps.getLongitude();
         }
 
         Log.v("GPS", Latitude);

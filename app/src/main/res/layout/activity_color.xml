@@ -4,14 +4,26 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/Gear">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Color of Net?"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:textSize="40sp"
+        android:textIsSelectable="false"
+        android:textColor="#ffffff" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="80dp"
         android:layout_weight="0.06">
 
         <android.support.design.widget.FloatingActionButton
@@ -135,5 +147,22 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp" />
     </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:drawable/ic_media_ff"
+        android:layout_gravity="right" />
 
 </LinearLayout>
