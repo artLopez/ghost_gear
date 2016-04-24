@@ -12,10 +12,10 @@ import android.content.*;
 
 public class ImageAdapter extends BaseAdapter {
 
-    private Context context;
+    public static Context context;
 
-    private int prevId = 1;
-    private int currentId = 1;
+    private String prevId = "1";
+    private String currentId = "1";
 
     private ArrayList<MatchesActivity.CodeID> bitmapList;
 
@@ -75,14 +75,23 @@ public class ImageAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Log.v("Image", "Clicked");
                 Log.v("Image", String.valueOf(v.getId()));
-                prevId = currentId;
-                currentId = v.getId();
+                prevId = bitmapList.get(v.getId()).ID;
+
+                currentId = bitmapList.get(v.getId()).ID;
                 //ImageView selectedImage = (ImageView) findViewById(currentId);
                 //ImageView prevImage = (ImageView) findViewById(prevId);
 
+                String nameLol = bitmapList.get(v.getId()).code + " was selected!";
+
+                CharSequence text = nameLol;
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(ImageAdapter.context, text, duration);
+                toast.show();
+
 
                 String name = bitmapList.get(v.getId()).ID;
-                String nameLol = bitmapList.get(v.getId()).code;
+
                 Log.v("Image", name);
                 Log.v("Image", nameLol);
 
@@ -95,5 +104,10 @@ public class ImageAdapter extends BaseAdapter {
         holder.picture.setAdjustViewBounds(true);
         return row;
     }
+
+    void removeImage() {
+
+    }
+
 
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -35,16 +36,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mRecord = new Record();
         Context c = getApplicationContext();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         if (c == null) {
             Log.v("Start", "Null");
         }
-        DatabaseAdapter mDbHelper = new DatabaseAdapter(getApplicationContext());
-        mDbHelper.open();
 
-        // Twine 0.3, Mesh1.7
-        final ArrayList<String> lol = mDbHelper.getMatches("0.5", "9.5", -1, "White");
-
-        mDbHelper.close();
 
         final FloatingActionButton cameraBT = (FloatingActionButton) findViewById(R.id.cameraButton);
 
