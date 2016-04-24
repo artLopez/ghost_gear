@@ -20,6 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Make Shown Here"
         android:id="@+id/item_txtMake"
+        android:paddingLeft="8dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/item_image"
         android:layout_toEndOf="@+id/item_image" />
@@ -31,6 +32,8 @@
         android:text="Alive/Dead"
         android:id="@+id/item_statusView"
         android:layout_toEndOf="@+id/item_image"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
         android:layout_alignBottom="@+id/item_image"
         android:layout_toRightOf="@+id/item_image" />
 </RelativeLayout>

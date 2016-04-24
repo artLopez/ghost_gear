@@ -2,6 +2,8 @@ package fishackthon.ghostgear;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by brian on 4/23/16.
@@ -25,6 +27,7 @@ public class Record implements Serializable{
     protected String netHeight;
     protected String netCode;
     protected String comments;
+    protected HashMap<String,ArrayList<String>> animalsOnNet;
 
     public Record() {
         firstName = "";
