@@ -2,13 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/Gear">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/questionView"
+        android:textColor="#ffffff"
         android:text=""
         android:layout_margin="20dp"
         />
@@ -23,12 +26,15 @@
             android:layout_height="85dp"
             android:id="@+id/statusRadioGroup"
             android:layout_marginLeft="25dp"
+            android:textColor="#ffffff"
             android:weightSum="1">
 
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Alive"
+                android:buttonTint="@color/white"
+                android:textColor="#ffffff"
                 android:id="@+id/aliveButton"
                 android:checked="true" />
 
@@ -36,6 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Dead"
+                android:buttonTint="@color/white"
+                android:textColor="#ffffff"
                 android:id="@+id/deadButton"
                 android:checked="false" />
 
@@ -48,21 +56,43 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="30dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="OK"
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/okButton"
-            android:layout_weight="1" />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
-            android:text="Cancel"
+            android:clickable="true"
+            app:backgroundTint="@color/colorPrimary"
+            app:rippleColor="@color/colorPrimaryDark"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="OK"
+            app:elevation="6dp"
+            app:fabSize="normal"
+            app:pressedTranslationZ="12dp"
+            app:borderWidth="0dp"
+            android:src="@drawable/checkmark"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="60dp" />
+
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/cancelButton"
-            android:layout_weight="1" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:backgroundTint="@color/colorPrimary"
+            app:rippleColor="@color/colorPrimaryDark"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="OK"
+            app:elevation="6dp"
+            app:fabSize="normal"
+            app:pressedTranslationZ="12dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:borderWidth="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="50dp" />
 
     </LinearLayout>
 

@@ -1,47 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/Gear">
 
     <TextView
-        android:layout_width="403dp"
-        android:layout_height="40dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Animal Found"
+        android:text="Found Any Animals?"
         android:textAlignment="center"
         android:paddingTop="20pt"
+        android:textColor="#ffffff"
         android:id="@+id/animalFound"
-        android:layout_weight="0.16" />
+        android:layout_weight="0.30"
+        android:textIsSelectable="false"
+        android:textSize="30sp" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="151dp"
         android:id="@+id/foundGroup"
-        android:weightSum="1">
+        android:textColor="#ffffff"
+        android:weightSum="1"
+        android:layout_marginTop="30dp">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Yes"
             android:id="@+id/yesButton"
+            android:buttonTint="@color/white"
             android:layout_gravity="center"
-            android:checked="true" />
+            android:textColor="#ffffff"
+            android:checked="true"
+            android:textSize="40sp" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No"
             android:id="@+id/noButton"
+            android:buttonTint="@color/white"
+            android:textColor="#ffffff"
             android:layout_gravity="center"
-            android:checked="false" />
+            android:checked="false"
+            android:textSize="40sp" />
     </RadioGroup>
 
-    <Button
-        android:layout_width="161dp"
-        android:layout_height="38dp"
-        android:text="Next"
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/nextButton"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@android:drawable/ic_media_ff"
+        android:layout_gravity="right" />
 
 </LinearLayout>

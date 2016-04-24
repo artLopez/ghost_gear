@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="80dp"
-        android:layout_weight="0.06">
+        android:layout_weight="0.24">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/whiteB"
@@ -40,7 +40,8 @@
             app:pressedTranslationZ="12dp"
             app:borderWidth="0dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/greyB"
@@ -57,7 +58,8 @@
             app:pressedTranslationZ="12dp"
             app:borderWidth="0dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/blueB"
@@ -73,7 +75,8 @@
             app:pressedTranslationZ="12dp"
             app:borderWidth="0dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/blackB"
@@ -90,7 +93,8 @@
             app:pressedTranslationZ="12dp"
             app:borderWidth="0dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -162,7 +166,8 @@
         app:borderWidth="0dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@android:drawable/ic_media_ff"
-        android:layout_gravity="right" />
+        android:src="@android:drawable/ic_media_ff"
+        android:layout_gravity="right"
+        android:layout_marginTop="100dp" />
 
 </LinearLayout>
