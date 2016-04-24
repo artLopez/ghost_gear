@@ -38,6 +38,7 @@ public class MatchesActivity extends AppCompatActivity {
     String color = "White";
     String meshSize = "1.7";
     String twineSize = "0.3";
+    String numberStrands = "3";
     String netCode = "WT29";
     String netWidth = "5";
     String netHeight = "5";
@@ -75,7 +76,7 @@ public class MatchesActivity extends AppCompatActivity {
                 //  Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                 Log.v("HTTP", "Hitting endpoints");
                 service.upload(first_name, last_name, email, phone, role,
-                        latitude, longitude, color, meshSize, twineSize, netCode, netWidth,
+                        latitude, longitude, color, meshSize, twineSize, numberStrands, netCode, netWidth,
                         netHeight, comments, animalDescriptions, new Callback<String>() {
                             @Override
                             public void success(String s, Response response) {
