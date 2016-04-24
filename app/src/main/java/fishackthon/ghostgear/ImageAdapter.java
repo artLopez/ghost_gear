@@ -4,6 +4,7 @@ package fishackthon.ghostgear;
  * Created by Algernon on 4/23/16.
  */
 
+import android.content.res.Resources;
 import android.util.Log;
 import android.widget.*;
 import java.util.*;
@@ -13,9 +14,9 @@ import android.content.*;
 public class ImageAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Integer> bitmapList;
+    private ArrayList<MatchesActivity.CodeID> bitmapList;
 
-    public ImageAdapter(Context context, ArrayList<Integer> bitmapList) {
+    public ImageAdapter(Context context, ArrayList<MatchesActivity.CodeID> bitmapList) {
         this.context = context;
         this.bitmapList = bitmapList;
     }
@@ -32,18 +33,12 @@ public class ImageAdapter extends BaseAdapter {
         return position;
     }
 
-    class ViewHolder implements View.OnTouchListener {
+
+    class ViewHolder {
         ImageView picture;
         ViewHolder(View v) {
             picture = (ImageView) v.findViewById(R.id.imageView);
-            picture.setOnTouchListener(this);
 
-        }
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            Log.v("Touched", "Touched");
-            return false;
         }
     }
 
@@ -67,8 +62,27 @@ public class ImageAdapter extends BaseAdapter {
             row.setTag(holder);
         } else {
             holder = (ViewHolder) row.getTag();
+
         }
-        holder.picture.setImageResource(bitmapList.get(position));
+
+        row.setClickable(true);
+
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("Image", "Clicked");
+                Log.v("Image", String.valueOf(v.getId()));
+                String name = bitmapList.get(v.getId()).ID;
+                String nameLol = bitmapList.get(v.getId()).code;
+                Log.v("Image", name);
+                Log.v("Image", nameLol);
+
+            }
+        });
+
+        row.setId(position);
+        Log.v("Image", String.valueOf(bitmapList.get(position).ID));
+        holder.picture.setImageResource(Integer.parseInt(bitmapList.get(position).ID));
         holder.picture.setAdjustViewBounds(true);
         return row;
     }

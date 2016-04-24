@@ -1,10 +1,10 @@
 package fishackthon.ghostgear.API;
 
-import retrofit.Callback;
-import retrofit.http.Multipart;
-import retrofit.http.POST;
-import retrofit.http.Part;
-import retrofit.mime.TypedFile;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 /**
  * Created by Algernon on 4/23/16.
@@ -12,24 +12,5 @@ import retrofit.mime.TypedFile;
 public interface APIService {
     public static final String BASE_URL = "http://localhost:2455/";
 
-    @Multipart
-    @POST("/ghostgear")
-    void upload(
-                @Part("first_name") String firstName,
-                @Part("last_name") String lastName,
-                @Part("email") String email,
-                @Part("number") String number,
-                @Part("role") String role,
-                @Part("latitude") String latitude,
-                @Part("longitude") String longitude,
-                @Part("color") String color,
-                @Part("mesh_size") String meshSize,
-                @Part("twine_size") String twineSize,
-                @Part("num_strands") String numberStrands,
-                @Part("net_code") String netCode,
-                @Part("net_width") String netWidth,
-                @Part("net_height") String netHeight,
-                @Part("comments") String comments,
-                @Part("animal_description") String animalDescriptions,
-                Callback<String> cb);
 }
+
