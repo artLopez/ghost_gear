@@ -180,6 +180,5 @@ public class SpeciesSelection extends AppCompatActivity  {
         {
             animals.put(animal, new ArrayList<>(Arrays.asList(status)));
         }
-
     }
 }

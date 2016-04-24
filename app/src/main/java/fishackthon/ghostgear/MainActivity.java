@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         //Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         startActivityForResult(intent, IMAGE_REQUEST);
+
     }
 
     public void getPictureTaken(){

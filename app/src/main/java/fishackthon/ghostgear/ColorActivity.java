@@ -35,7 +35,6 @@ public class ColorActivity  extends AppCompatActivity implements View.OnClickLis
         redB = (FloatingActionButton) findViewById(R.id.redB);
         nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
 
-
         whiteB.setOnClickListener(this);
         greyB.setOnClickListener(this);
         blueB.setOnClickListener(this);
