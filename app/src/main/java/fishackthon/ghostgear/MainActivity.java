@@ -52,11 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         cameraBT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-//                onOpenCamera();
-                Intent i = new Intent(MainActivity.this, MatchesActivity.class);
-                i.putStringArrayListExtra("lol", lol);
-                startActivity(i);
-              //  Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                onOpenCamera();
             }
         });
 

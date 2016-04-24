@@ -4,7 +4,6 @@ package fishackthon.ghostgear;
  * Created by Algernon on 4/23/16.
  */
 
-import android.content.res.Resources;
 import android.util.Log;
 import android.widget.*;
 import java.util.*;
@@ -14,6 +13,10 @@ import android.content.*;
 public class ImageAdapter extends BaseAdapter {
 
     private Context context;
+
+    private int prevId = 1;
+    private int currentId = 1;
+
     private ArrayList<MatchesActivity.CodeID> bitmapList;
 
     public ImageAdapter(Context context, ArrayList<MatchesActivity.CodeID> bitmapList) {
@@ -72,6 +75,12 @@ public class ImageAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Log.v("Image", "Clicked");
                 Log.v("Image", String.valueOf(v.getId()));
+                prevId = currentId;
+                currentId = v.getId();
+                //ImageView selectedImage = (ImageView) findViewById(currentId);
+                //ImageView prevImage = (ImageView) findViewById(prevId);
+
+
                 String name = bitmapList.get(v.getId()).ID;
                 String nameLol = bitmapList.get(v.getId()).code;
                 Log.v("Image", name);
