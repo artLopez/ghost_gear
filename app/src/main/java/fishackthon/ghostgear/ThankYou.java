@@ -11,7 +11,7 @@ public class ThankYou extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.thankyou_activity);
     }
 }

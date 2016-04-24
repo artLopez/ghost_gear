@@ -1,5 +1,6 @@
 package fishackthon.ghostgear;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -51,6 +52,7 @@ public class MatchesActivity extends AppCompatActivity {
     String netHeight = "5";
     String comments = "Lol";
     String animalDescriptions = "[{code: 3, condition: 'Alive', length_size: 2}]";
+    Context c;
 
     SharedPreferences pref;
 
@@ -114,6 +116,7 @@ public class MatchesActivity extends AppCompatActivity {
         setContentView(R.layout.matches_activity);
         Intent i = getIntent();
         Record mRecord = (Record) i.getSerializableExtra("mRecord");
+        c = this;
 
         //ArrayList<String> codes = i.getStringArrayListExtra("lol");
         this.bitmapList = new ArrayList<CodeID>();
@@ -153,9 +156,16 @@ public class MatchesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                new AsyncTaskRunner().execute("");
-                Intent i = new Intent(getApplicationContext(), ThankYou.class);
-                startActivity(i);
+
+                Context context = getApplicationContext();
+                CharSequence text = "Thank you for your contribution!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                Intent intent = new Intent(c, MainActivity.class);
+                startActivity(intent);
 
             }
     });

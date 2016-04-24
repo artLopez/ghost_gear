@@ -80,7 +80,7 @@ public class DatabaseAdapter
 
         try
         {
-            String sql ="SELECT NETCODE FROM net_kit where strands=? and color=?";
+            String sql ="SELECT NETCODE FROM net_kit where strands=? and color=? LIMIT 5";
 
 
             Cursor mCur = mDbHelper.myDataBase.rawQuery(sql, new String[] {String.valueOf(numStrands), color});

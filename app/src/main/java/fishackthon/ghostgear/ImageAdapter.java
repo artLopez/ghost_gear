@@ -12,7 +12,7 @@ import android.content.*;
 
 public class ImageAdapter extends BaseAdapter {
 
-    private Context context;
+    public static Context context;
 
     private String prevId = "1";
     private String currentId = "1";
@@ -81,9 +81,17 @@ public class ImageAdapter extends BaseAdapter {
                 //ImageView selectedImage = (ImageView) findViewById(currentId);
                 //ImageView prevImage = (ImageView) findViewById(prevId);
 
+                String nameLol = bitmapList.get(v.getId()).code + " was selected!";
+
+                CharSequence text = nameLol;
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(ImageAdapter.context, text, duration);
+                toast.show();
+
 
                 String name = bitmapList.get(v.getId()).ID;
-                String nameLol = bitmapList.get(v.getId()).code;
+
                 Log.v("Image", name);
                 Log.v("Image", nameLol);
 
