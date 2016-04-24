@@ -18,6 +18,7 @@ public class MeasurmentForNet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurment_for_net);
 
+        mRecord = (Record) getIntent().getSerializableExtra("mRecord");
         meshEdit = (EditText) findViewById(R.id.meshEdit);
         twineView = (EditText) findViewById(R.id.twineView);
         netHeight = (EditText) findViewById(R.id.netHeight);
@@ -25,7 +26,7 @@ public class MeasurmentForNet extends AppCompatActivity {
         strandsEdit = (EditText) findViewById(R.id.strandsEdit);
         nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
 
-        mRecord = (Record) getIntent().getSerializableExtra("mRecord");
+
 
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +65,7 @@ public class MeasurmentForNet extends AppCompatActivity {
         String netWidths = netWidth.getText().toString();
         String netHeights = netHeight.getText().toString();
         mRecord.setMeasurements(meshSize,twinSize,numStrands,netWidths,netHeights);
-        Intent intent = new Intent(this, ImageAdapter.class);
+        Intent intent = new Intent(this, MatchesActivity.class);
         intent.putExtra("mRecord", mRecord);
         startActivity(intent);
     }

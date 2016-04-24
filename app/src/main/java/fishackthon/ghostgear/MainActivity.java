@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private File imgFile;
     private Record mRecord;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         }
         DatabaseAdapter mDbHelper = new DatabaseAdapter(getApplicationContext());
         mDbHelper.open();
-
 
         // Twine 0.3, Mesh1.7
         final ArrayList<String> lol = mDbHelper.getMatches("0.5", "9.5", -1, "White");

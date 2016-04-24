@@ -20,25 +20,30 @@ public class AnimalSelection extends AppCompatActivity {
     private RadioButton yesButton, noButton;
     private FloatingActionButton nextButton;
     private TextView title;
+    private Record mRecord;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_selection);
 
+        mRecord = (Record) getIntent().getSerializableExtra("mRecord");
         radioGroup = (RadioGroup) findViewById(R.id.foundGroup);
         yesButton = (RadioButton) findViewById(R.id.yesButton);
         noButton = (RadioButton) findViewById(R.id.noButton);
         nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
+
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(yesButton.isChecked()){
                     final Intent animalIntent = new Intent(AnimalSelection.this, SpeciesSelection.class);
+                    animalIntent.putExtra("mRecord", mRecord);
                     startActivity(animalIntent);
                 }
                 else{
                     final Intent measureIntent = new Intent(AnimalSelection.this, MeasurmentForNet.class);
+                    measureIntent.putExtra("mRecord", mRecord);
                     startActivity(measureIntent);
                 }
 

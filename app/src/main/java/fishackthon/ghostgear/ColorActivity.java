@@ -44,7 +44,6 @@ public class ColorActivity  extends AppCompatActivity implements View.OnClickLis
         greenB.setOnClickListener(this);
         redB.setOnClickListener(this);
         nextButton.setOnClickListener(this);
-
     }
 
     @Override

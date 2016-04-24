@@ -37,12 +37,14 @@ public class SpeciesSelection extends AppCompatActivity  {
     private RadioButton aliveButton, deadButton;
     private HashMap<String, ArrayList<String>> animals = new HashMap<String, ArrayList<String>>();
     private FloatingActionButton okButton, cancelButton, nextButton;
+    private Record mRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_species_selection);
 
+        mRecord = (Record) getIntent().getSerializableExtra("mRecord");
         nextButton = (FloatingActionButton) findViewById(R.id.nextButton);
         aniList = new ArrayList<>();
         aniList.add(new ItemData("Select a species...", R.drawable.clear));
@@ -76,8 +78,10 @@ public class SpeciesSelection extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                     final Intent animalIntent = new Intent(SpeciesSelection.this, MeasurmentForNet.class);
+                    animalIntent.putExtra("mRecord", mRecord);
                     SpeciesSelection.this.startActivity(animalIntent);
                     SpeciesSelection.this.finish();
+
 
             }
         });
